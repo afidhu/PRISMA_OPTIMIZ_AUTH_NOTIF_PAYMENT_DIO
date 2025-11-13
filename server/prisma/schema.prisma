@@ -1,0 +1,82 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  // output   = "../generaed/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+          // model User {
+          //   id      Int   @default(autoincrement())
+          //   email   String  
+          //   name    String 
+          //   age Int ? @map("user_age")
+          //   phone Int?
+
+          //   @@id([name,email])
+
+          // // @@unique([id])
+          // @@index([phone])
+          //   posts   Post []
+          //   // profile Profile?
+          // }
+
+          // model Post {
+          //   id        Int      @id @default(autoincrement())
+          //   createdAt DateTime @default(now())
+          //   updatedAt DateTime @updatedAt
+          //   title     String
+          //   content   String?
+          //   published Boolean  @default(false)
+          //   // author    User     @relation(fields: [authorId], references: [id])
+
+          //   user_email String
+          //   user_age String
+          // @@unique([user_age,user_email])
+          //   userdata User @relation(fields: [user_age,user_email],references: [name,email])
+          //   authorId  Int
+
+          // }
+
+
+model User {
+  id      Int      @id @default(autoincrement())
+  email   String   @unique
+  name    String?
+  password String
+  phone Int?
+  posts   Post[]
+  profile Profile?
+}
+
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String
+  content   String?
+  comments Int @default(0)
+  published Boolean  @default(false)
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade) ///HERE Cascande(when user deleted and its post is deleted)
+  authorId  Int
+  ///||||||IF YOU SETNULL AS BELLOW, MUST PUT OPTIONAL(?) as nullable, LOOK BELLOW/////
+  // author    User ?    @relation(fields: [authorId], references: [id], onDelete: SetNull) ///HERE Cascande(when user deleted and its post is deleted)
+  // authorId  Int?
+}
+
+model Profile {
+  id     Int     @id @default(autoincrement())
+  bio    String?
+  user   User    @relation(fields: [userId], references: [id])
+  userId Int     @unique
+}
+
