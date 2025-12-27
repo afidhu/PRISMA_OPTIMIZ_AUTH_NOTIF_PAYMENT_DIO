@@ -165,7 +165,9 @@ export const addUser = async (req: Request, resp: Response) => {
             create:{
                 email:'newusergmail.com',
                 phone:765432,
-                name:'new use'
+                name:'new use',
+                password :'1245'
+
             
             }
         })
