@@ -1,0 +1,30 @@
+
+
+=>npm install -D ts-jest @types/jest
+
+=>npx ts-jest config:init
+
+
+at // jest.config.js
+
+should be as:
+
+            import { createDefaultPreset } from "ts-jest";
+
+            const tsJestTransformCfg = createDefaultPreset().transform;
+
+            /** @type {import("jest").Config} */
+            export default {
+            testEnvironment: "node",
+            transform: {
+                ...tsJestTransformCfg,
+            },
+            };
+
+=>run :npm test
+
+//FOR SUPERJEST
+npm install --save-dev supertest @types/supertest
+# or with pnpm/yarn:
+# pnpm add -D supertest @types/supertest
+# yarn add -D supertest @types/supertest

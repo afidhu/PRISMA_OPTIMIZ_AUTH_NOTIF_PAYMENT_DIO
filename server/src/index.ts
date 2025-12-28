@@ -13,7 +13,7 @@ import paymentRoute from "./stripe_payments/paymentRoute.ts";
 
 dotenv.config()
 
-const app = express()
+export const app = express()
 
 export const prisma =new PrismaClient()
 

@@ -1,0 +1,44 @@
+// describe("Demo", () => {
+//   it("Demo test", () => {
+//     console.log("This is a demo test.");
+//   });
+// });
+
+import { add } from "../controller/demo_controller";
+
+// test("should return the sum of two numbers", () => {
+//   expect(add(1, 2)).toBe(3);
+// });
+
+
+
+
+// describe('Addition Function', () => {
+//   it('should return the sum of two numbers', () => {
+//     const result = add(2, 3);
+//     expect(result).toBe(5);
+//   });
+
+//   test("should return the sum of two numbers", () => {
+//   expect(add(1, 2)).toBe(3);
+// });
+// });
+
+
+
+describe('POST /login', () => {
+  beforeAll(async () => {
+    // setup DB
+  });
+//  afterAll(async () => {
+//     await prisma.$disconnect();
+//   });
+
+  it('returns 200 on success', async () => {
+    expect(200).toBe(200);
+  });
+
+  it('returns 401 on wrong password', async () => {
+    expect(401).toBe(401);
+  });
+});

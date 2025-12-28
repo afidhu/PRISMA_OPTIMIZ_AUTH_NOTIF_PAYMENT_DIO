@@ -10,7 +10,7 @@ export const addpost = async (req: Request, resp: Response) => {
         const results = await prisma.post.createMany({
             data: userList
         })
-        resp.status(200).json(results)
+        resp.status(201).json(results)
     } catch (error) {
         return resp.status(500).json(` errror at : ${error}`)
 
