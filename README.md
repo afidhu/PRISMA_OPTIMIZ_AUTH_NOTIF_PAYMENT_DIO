@@ -17,3 +17,5 @@ samples, guidance on mobile development, and a full API reference.
 
 
 the api is hosted fined 
+
+now development activities has been pause ⏸️ 
